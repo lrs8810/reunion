@@ -11,6 +11,8 @@ class Activity
   end
 
   def total_cost
-    @participants.values[0]
+    @participants.sum do |key, value|
+      value
+    end
   end
 end

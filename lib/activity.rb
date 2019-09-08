@@ -15,4 +15,15 @@ class Activity
       value
     end
   end
+
+  def split
+    total_cost / @participants.length
+  end
+
+  def owed
+    @participants.each_value do |value|
+      split - value
+    end
+    require 'pry'; binding.pry
+  end
 end

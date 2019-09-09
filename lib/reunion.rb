@@ -7,4 +7,8 @@ class Reunion
     @cohort_name = cohort_name
     @activities = []
   end
+
+  def add_activity(activity)
+    @activities << activity
+  end
 end

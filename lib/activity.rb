@@ -11,9 +11,7 @@ class Activity
   end
 
   def total_cost
-    @participants.sum do |key, value|
-      value
-    end
+    @participants.values.sum
   end
 
   def split
@@ -21,9 +19,9 @@ class Activity
   end
 
   def owed
-    @participants.each_value do |value|
-      split - value
+    @participants.inject(Hash.new(0)) do |new_hash, (key, value)|
+      new_hash[key] = split - value
+      new_hash
     end
-    require 'pry'; binding.pry
   end
 end

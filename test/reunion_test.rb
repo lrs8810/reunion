@@ -1,7 +1,13 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/activity'
 require './lib/reunion'
 
 class ReunionTest < Minitest::Test
-end 
+  def setup
+    @reunion = Reunion.new("1406 BE")
+  end
+
+  def test_it_exists
+    assert_instance_of Reunion, @reunion
+  end
+end

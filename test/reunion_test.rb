@@ -56,4 +56,21 @@ class ReunionTest < Minitest::Test
 
     assert_equal expected, @reunion.breakout
   end
+
+  def test_breakout_summary
+    activity_1 = Activity.new("Brunch")
+    activity_1.add_participant("Maria", 20)
+    activity_1.add_participant("Luther", 40)
+    @reunion.add_activity(activity_1)
+    activity_2 = Activity.new("Drinks")
+    activity_2.add_participant("Maria", 60)
+    activity_2.add_participant("Luther", 60)
+    activity_2.add_participant("Louis", 0)
+    @reunion.add_activity(activity_2)
+
+    expected = "Maria: -10\nLuther: -30\nLouis: 40\n"
+
+    assert_equal expected, @reunion.summary
+    puts @reunion.summary
+  end
 end

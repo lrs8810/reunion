@@ -19,9 +19,9 @@ class Activity
   end
 
   def owed
-    @participants.inject(Hash.new(0)) do |new_hash, (key, value)|
-      new_hash[key] = split - value
-      new_hash
+    @participants.inject(Hash.new(0)) do |owed, (key, value)|
+      owed[key] = split - value
+      owed
     end
   end
 end
